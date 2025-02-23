@@ -1,1 +1,1 @@
-# Projects
+MERN: Implementation and Authentication
