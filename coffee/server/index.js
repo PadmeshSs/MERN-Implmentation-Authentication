@@ -2,6 +2,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 const cors = require('cors')
 const usermodel = require('./models/user')
+const { comparePassword } = require('./hash.js');
 
 const app = express()
 app.use(express.json())
@@ -23,7 +24,8 @@ app.post('/login', async (req, res) => {
         }
 
         // Check if the password matches
-        if (user.password === password) {
+        const ismatch = await comparePassword(password, user.password);
+        if (ismatch) {
             // Case: Password matches
             return res.status(200).json({
                 user: user,
@@ -50,6 +52,5 @@ app.post('/register', async (req, res)=>{
 })
 
 app.listen(3001, ()=>{
-    console.log("server is running");
-    
+    console.log("server is running"); 
 })

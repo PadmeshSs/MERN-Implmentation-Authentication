@@ -2,9 +2,10 @@ import axios from 'axios';
 
 export const serverpost = (e, formdata, signuponly)=>{
     e.preventDefault();
+    console.log("serverpost function triggered");
     const elemnt = document.querySelector(".errortxt-2");
     if(formdata.pass_signup.length < 8 || formdata.pass_signup.length > 12){
-        elemnt.textContent ='Password must be between 8-12 characters'
+        elemnt.textContent ='Password must be between 8-12 characters';
         elemnt.classList.add('red');
     }
     else{
@@ -20,6 +21,6 @@ export const serverpost = (e, formdata, signuponly)=>{
                 elemnt.classList.add("green");
             }
         })
-        .catch(err=>console.log(err))
+        .catch(err => console.error("Axios Error:", err.response?.data || err.message));
     }
 }

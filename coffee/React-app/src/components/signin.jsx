@@ -4,7 +4,7 @@ import { Usercontext } from './appnav';
 import { serverpost } from './serverpost';
 import { serverlogin } from './serverlogin';
 
-const Signin = forwardRef((props, ref)=>{
+const Signin = forwardRef((ref)=>{
 
     const {setval : setval, setname : setname, setlog : setlog} = useContext(Usercontext);
 
@@ -39,7 +39,8 @@ const Signin = forwardRef((props, ref)=>{
     }
 
     const handleregister = (e)=>{
-        serverpost(e, formdata, signuponly, elemnt)
+        e.preventDefault();
+        serverpost(e, formdata, signuponly)
     }
 
     return (
