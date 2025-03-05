@@ -170,7 +170,7 @@ input{
 
 @media (max-width: 768px){
     .cover{
-        display: none;
+        display: none !important;
     }
 
     .wrapper .cover.left  ~ .signupcont, .wrapper .cover + .logincont{
